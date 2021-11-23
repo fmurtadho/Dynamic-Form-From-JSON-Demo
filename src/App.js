@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import DynamicForm from './components/DynamicForm/DynamicForm';
+import { formData } from './data/FormData';
+import {useEffect} from "react";
 
 function App() {
+  const handleSubmission = val => {
+    console.log('Values : ', val)
+  }
+
+  useEffect(() => {
+    console.log('JSON');
+    console.log(formData);
+    console.log('***');
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Dynamic Form Demo</h2>
+      <DynamicForm fields={formData} cbSubmit={handleSubmission} />
+      <p>check console for submitted data</p>
     </div>
-  );
+  )
 }
 
 export default App;
